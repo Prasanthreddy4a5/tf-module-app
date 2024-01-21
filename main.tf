@@ -216,7 +216,7 @@ resource "aws_lb_listener_rule" "main" {
 
   condition {
     host_header {
-      values = [var.component == "frontend" ? "${var.env == "prod" ? "www" : var.env}.rdevopsb72.online" : "${var.component}-${var.env}.rdevopsb72.online"]
+      values = [var.component == "frontend" ? "${var.env == "prod" ? "www" : var.env}.prashdevops.online" : "${var.component}-${var.env}.prashdevops.online"]
     }
   }
 }
@@ -261,9 +261,9 @@ resource "aws_lb_listener_rule" "public" {
     target_group_arn = aws_lb_target_group.public[0].arn
   }
 
-  condition {
-    host_header {
-      values = ["${var.env == "prod" ? "www" : var.env}.rdevopsb72.online"]
-    }
-  }
-}
+#  condition {
+#    host_header {
+#      values = ["${var.env == "prod" ? "www" : var.env}.prashdevops.online"]
+#    }
+#  }
+#}
