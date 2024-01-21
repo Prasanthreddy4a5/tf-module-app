@@ -266,4 +266,4 @@ resource "aws_lb_listener_rule" "public" {
 #      values = ["${var.env == "prod" ? "www" : var.env}.prashdevops.online"]
 #    }
 #  }
-#}
+}
