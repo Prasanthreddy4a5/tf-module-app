@@ -265,4 +265,4 @@ resource "aws_lb_target_group_attachment" "public" {
 #      values = ["${var.env == "prod" ? "www" : var.env}.prashdevops.online"]
 #    }
 #  }
-}
+#}
