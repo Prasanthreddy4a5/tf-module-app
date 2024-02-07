@@ -178,13 +178,13 @@ resource "aws_autoscaling_policy" "asg-cpu-rule" {
   }
 }
 
-resource "aws_route53_record" "main" {
-  zone_id = var.zone_id
-  name    = var.component == "frontend" ? var.env == "prod" ? "www" : var.env : "${var.component}-${var.env}"
-  type    = "CNAME"
-  ttl     = 30
-  records = [var.component == "frontend" ? var.public_alb_name : var.private_alb_name]
-}
+#resource "aws_route53_record" "main" {
+#  zone_id = var.zone_id
+#  name    = var.component == "frontend" ? var.env == "prod" ? "www" : var.env : "${var.component}-${var.env}"
+#  type    = "CNAME"
+#  ttl     = 30
+#  records = [var.component == "frontend" ? var.public_alb_name : var.private_alb_name]
+#}
 
 resource "aws_lb_target_group" "main" {
   name     = local.name_prefix
