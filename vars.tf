@@ -17,7 +17,7 @@ variable "lb_priority" {}
 variable "public_alb_name" {}
 variable "public_listener" {}
 variable "default_vpc_id" {}
-#variable "parameters" {}
+variable "parameters" {}
 #variable "monitoring_ingress_cidr" {}
 #variable "az" {}
 #variable "kms_key_id" {}
