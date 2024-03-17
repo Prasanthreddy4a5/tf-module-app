@@ -130,7 +130,7 @@ resource "aws_launch_template" "main" {
       ebs {
         delete_on_termination = "true"
         encrypted             = "true"
-        kms_key_id            = var.kms_key_id
+        kms_key_id            = var.kms_key_id           #ARN of the KMS key
         volume_size           = 10
         volume_type           = "gp2"
       }
