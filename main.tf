@@ -124,17 +124,17 @@ resource "aws_launch_template" "main" {
       env       = var.env
     }))
 
-    block_device_mappings {
-      device_name = "/dev/sda1"
-
-      ebs {
-        delete_on_termination = "true"
-        encrypted             = "true"
-        kms_key_id            = var.kms_key_id           #ARN of the KMS key
-        volume_size           = 10
-        volume_type           = "gp2"
-      }
-    }
+#    block_device_mappings {
+#      device_name = "/dev/sda1"
+#
+#      ebs {
+#        delete_on_termination = "true"
+#        encrypted             = "true"
+#        kms_key_id            = var.kms_key_id           #ARN of the KMS key
+#        volume_size           = 10
+#        volume_type           = "gp2"
+#      }
+#    }
 
   tag_specifications {
     resource_type = "instance"
@@ -182,11 +182,12 @@ resource "aws_autoscaling_group" "main" {
 
 resource "aws_route53_record" "main" {
   zone_id = var.zone_id
-  name    = var.component == "frontend" ? var.env : "${var.component}-${var.env}"
+  name    = var.component == "frontend" ? var.env == "prod" ? "www" : var.env : "${var.component}-${var.env}"
   type    = "CNAME"
   ttl     = 30
   records = [var.component == "frontend" ? var.public_alb_name : var.private_alb_name]
 }
+
 
 resource "aws_lb_target_group" "main" {
   name     = local.name_prefix
